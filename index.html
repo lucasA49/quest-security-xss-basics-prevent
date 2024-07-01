@@ -26,10 +26,10 @@
                 And do you even have a proper travel token, for a start?
             </p>
 
-            <!-- XSS vulnerability
+            XSS vulnerability
 
                     Hack hint: typing <script>alert(1)</script> in the input field won't work, but
-                    typing something like <img src=" " onerror="alert(1)"> will! -->
+                    typing something like <img src=" " onerror="alert(1)"> will!
 
             <input class="text-center" placeholder="Answer here." id="token-question" style="margin-bottom: 1%;">
 
@@ -40,6 +40,22 @@
     </div>
 
     <script>
+        function escapeHtml(unsafe) {
+                    return unsafe
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#039;");
+                }
+                function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+}
 
         const input = document.getElementById("token-question");
         const log = document.getElementById("token-answer");
